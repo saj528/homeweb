@@ -2,9 +2,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+require 'test_helper'
 
-  # Add more helper methods to be used by all tests here...
+class MessageTest < ActiveSupport::TestCase
+
+  test 'name, email and body are required by law' do
+    msg = Message.new
+
+    refute msg.valid?, 'Blank Mesage should be invalid'
+
+    assert_match /blank/, msg.errors[:name].to_s
+    assert_match /blank/, msg.errors[:email].to_s
+    assert_match /blank/, msg.errors[:body].to_s
+  end
 end

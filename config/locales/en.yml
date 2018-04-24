@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  message_mailer:
+    contact_me:
+      subject: "Message from Homeweb"
