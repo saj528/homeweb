@@ -14,6 +14,17 @@ class CustomersController < ApplicationController
     end
   end
 
+  def show
+    @customer = Customer.find(params[:id])
+  end
+
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+  def index
+    @customers = Customer.all
+  end
+
   private
 
   def message_params
